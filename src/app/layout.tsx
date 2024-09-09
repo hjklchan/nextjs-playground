@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Link from "next/link";
+import { Header, Footer } from "@/components/Layout";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -34,33 +34,9 @@ export default function RootLayout({
                 <main className="overflow-y-auto p-6">
                     {children}
                 </main>
+                <Footer />
             </body>
         </html>
     );
 }
 
-function Header() {
-    const middleColor = () => {
-        // return "bg-gradient-to-b from-gray-100 via-gray-200 to-white";
-        return "bg-gradient-to-b from-gray-50 to-gray-300 ";
-    }
-
-    return <header className={"bg-gray-100 sticky top-0 w-full border-b-1 shadow-md " + middleColor()}>
-        <div className="flex justify-between px-6 items-center">
-            <div>
-                <nav className="mx-auto py-1">
-                    <div className="flex items-center">
-                        <Link href="/" className="select-none font-semibold text-sm">hjkl1</Link>
-                        <div className="flex space-x-3 ml-3 text-xs items-center">
-                            <Link href="/articles" className="select-none text-gray-800">Articles</Link>
-                            <Link href="#" className="select-none text-gray-800">About me</Link>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div>
-                <a className="text-xs">Others</a>
-            </div>
-        </div>
-    </header>
-}

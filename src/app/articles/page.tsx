@@ -1,37 +1,32 @@
+"use client"
+
+import { useState } from "react";
 
 export default function Articles() {
-    const categories = () => {
-        return <div>
-            <a>Programing</a>
-            <a>Life</a>
-            <a>Other...</a>
-        </div>
-    }
-
-    const subCategories = () => {
-        return <div>
-            <a>PHP</a>
-            <a>Typescipt</a>
-            <a>Rust</a>
-        </div>;
-    }
+    const [count, setCount] = useState(0);
 
     return <>
         <section>
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                 {/* Filter Grid */}
                 <div>
-                    <ul role="list">
+                    <ul role="list" className="text-sm">
                         <li>
-                            <input type="radio" name="type" /><label className="text-sm">Newest</label>
+                            <input type="radio" name="type" />
+                            <label className="ml-1">Newest</label>
                         </li>
                         <li>
-                            <input type="radio" name="type" /><label>Hotest</label>
+                            <input type="radio" name="type" />
+                            <label className="ml-1">Hotest</label>
                         </li>
                         <li>
-                            <input type="radio" name="type" /><label>Oldest</label>
+                            <input type="radio" name="type" />
+                            <label className="ml-1">Oldest</label>
                         </li>
                     </ul>
+                    <div>
+                        Other filters...
+                    </div>
                 </div>
                 {/* Content Grid */}
                 <div className="lg:col-span-3">
