@@ -1,8 +1,20 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./styles.css";
-import { HiOutlineChatBubbleBottomCenterText } from "react-icons/hi2";
+import { HiOutlineChatBubbleBottomCenterText, HiMiniLockClosed } from "react-icons/hi2";
+
+interface Post {
+    id: number;
+    categoryId: number;
+    categoryName: string;
+    status: string;
+    title: string;
+    authorName: string;
+    numReply: number;
+    numView: number;
+    updatedAt: string;
+}
 
 export default function Blog() {
     const onNewTab = (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,21 +28,23 @@ export default function Blog() {
     }
 
     useEffect(() => {
-    });
+    }, []);
 
     return <>
         {/* Categories */}
+        {/* Posts */}
         <div>
             <table className="w-full table-fixed" cellSpacing={0} cellPadding={0}>
                 <tbody>
-                    <tr className="border-b border-[#hC2D5E3] bg-[#F2F2F2] border-b border-[#C2D5E3] text-sm">
-                        <td colSpan={2} className="text-left pl-2 py-2 space-x-3">
-                            <input type="checkbox" onChange={onNewTab} /><label className="text-xs">New Tab</label>
-                            <input type="checkbox" onChange={onShowTop} /><label className="text-xs">Show Top</label>
+                    <tr className="border-b border-[#hC2D5E3] bg-[#F2F2F2] border-b border-[#C2D5E3] text-xs">
+                        <td colSpan={2} className="text-left pl-2 py-3 space-x-3">
+                            <input type="checkbox" onChange={onNewTab} /><label>New Tab</label>
+                            <input type="checkbox" onChange={onShowTop} /><label>Show Top</label>
                             <a className="hover:cursor-pointer text-[#369]">All</a>
                             <a className="hover:cursor-pointer text-[#369]">Newest</a>
                             <a className="hover:cursor-pointer text-[#369]">Popular</a>
                         </td>
+                        {/* TODO Hide by device */}
                         <td className="w-28">Author</td>
                         <td className="w-24">Info</td>
                         <td className="w-28">Last Updated</td>
@@ -41,7 +55,7 @@ export default function Blog() {
                 <tbody className={"tableBody"}>
                     <tr className="table-row align-middle hover:bg-[#F2F2F2]">
                         <td className="w-6">
-                            <HiOutlineChatBubbleBottomCenterText />
+                            <HiOutlineChatBubbleBottomCenterText className="w-full block" />
                         </td>
                         <td>
                             <a className="hover:cursor-pointer text-[#369] pr-2">
@@ -65,7 +79,9 @@ export default function Blog() {
                         <td className="w-28">2024/09/10</td>
                     </tr>
                     <tr className="table-row align-middle hover:bg-[#F2F2F2]">
-                        <td className="w-6"><span className="pl-2">I</span></td>
+                        <td className="w-6">
+                            <HiMiniLockClosed className="w-full block" />
+                        </td>
                         <td>
                             <a className="hover:cursor-pointer text-[#369] pr-2">
                                 [其他原创]
